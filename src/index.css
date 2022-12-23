@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +7,82 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(pink, orange, brown);
+  height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1{
+  font-family: Bangers;
+  font-size: 9vw;
+  color: pink;
+  animation: color-change 32s infinite;
+}
+
+@keyframes color-change {
+  0% { color: rgb(236, 55, 155); }
+  10% { color: rgb(0, 9, 139); }
+  20% { color: rgb(71, 35, 2); }
+  30% { color: rgb(92, 6, 6); }
+  40% { color: rgb(68, 3, 57); }
+  50% { color: rgb(49, 2, 86); }
+  60% { color: rgb(70, 233, 245); }
+  70% { color: rgb(105, 52, 99); }
+  80% { color: rgb(134, 77, 3); }
+  90% { color: rgb(5, 109, 1); }
+  100% { color: rgb(216, 0, 0); }
+}
+
+#current-image {
+  width: 40vw;
+  margin-top: 5vh;
+  border-radius: 4vw;
+  border: 5px solid rgb(36, 40, 41);
+  box-shadow: 10px 0px 50px 35px #c09abe;
+  background-color: grey;
+}
+
+.fade-in-image { 
+  animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+label {
+  font-size: 3vw;
+  padding-right: 10px;
+}
+
+input {
+  width: 25vw;
+  height: 4vw;
+  font-size: 2vw;
+}
+
+button {
+  margin-left: 10px;
+  font-family: Bangers;
+  width: 25vw;
+  height: 4vw;
+  font-size: 3vw;
+  color: rgb(227, 195, 100);
+  margin-top: 20px;
+  background-color: rgb(86, 40, 5);
+  border-radius: 20px;
+}
+
+.playlist-flexbox {
+display: flex;
+margin: 70px 6vw 10px 10px;
+}
+
+.playlist-flexbox > * {
+width: 30vw;
 }
