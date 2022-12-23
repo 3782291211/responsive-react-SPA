@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
         <Header />
-        <AddSong setPlaylist={setPlaylist} playlist={playlist} />
-        <Playlist />
+        <AddSong setPlaylist={setPlaylist} />
+        <Playlist playlist={playlist}/>
     </div>
   );
 }
@@ -17,38 +17,43 @@ function App() {
 
 const Header = () => {
   return (
-      <h1>Create a music playlist</h1>
+      <h1>Choose your favourite songs</h1>
   );
 };
 
 
-function AddSong ({setPlaylist, playlist}) {
-  const [newSong, setSong] = useState('');
-  const [newArtist, setArtist] = useState('');
-  const [imgUrl, setImgUrl] = useState('');
-  const [songInfo, setSongInfo] = useState({title: "", album: "", artist: "", genre: "" });
+
+function AddSong ({setPlaylist}) {
+const [newSong, setSong] = useState('');
+const [newArtist, setArtist] = useState('');
+const [imgUrl, setImgUrl] = useState('');
+const [songInfo, setSongInfo] = useState({title: "", album: "", artist: "", genre: "" , artwork: ""});
  
-  const handleNewSong = e => setSong(e.target.value);
-  const handleNewArtist = e => setArtist(e.target.value);
+const handleNewSong = e => setSong(e.target.value);
+const handleNewArtist = e => setArtist(e.target.value);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    setPlaylist(prev => {
-      if (!prev.includes(songInfo)) {
-        return [...prev, songInfo];
-      };
-    });
-    console.log(playlist);
-  };
-
-  useEffect(() => {
+useEffect(() => {
+  if (newSong && newArtist) {
     musicInfo.searchSong(
       {title: newSong, artist: newArtist}, 1000).then(obj => {
         setImgUrl(obj.artwork);
-        setSongInfo(() => ({title: obj.title, album: obj.album, artist: obj.artist, genre: obj.genre }));
-      });
+        setSongInfo(() => ({title: obj.title, album: obj.album, artist: obj.artist, genre: obj.genre, artwork: obj.artwork }));
+      }).catch(err => console.log(err));
     setImgUrl(false);
-  }, [newSong, newArtist]);
+  }
+}, [newSong, newArtist]);
+
+const handleSubmit = e => {
+  e.preventDefault();
+  setPlaylist(prev => {
+    for (const song of prev) {
+      if (song.title === songInfo.title) {
+        return prev;
+      }
+    }
+  return [...prev, songInfo];
+  });
+};
 
   return (
     <div>
@@ -67,6 +72,7 @@ function AddSong ({setPlaylist, playlist}) {
 };
 
 
+
 function AlbumArt ({imgUrl}) {
   return (
     <img id="current-image" src={imgUrl} />
@@ -74,15 +80,25 @@ function AlbumArt ({imgUrl}) {
 }
 
 
-function Playlist () {
+function Playlist ({playlist}) {
+const [showDelete, setDelete] = useState(false);
+
   return (
-    <div className="playlist-flexbox">
-      <p>Peace Sells</p>
-      <img src="https://c8.alamy.com/comp/2DMY10P/megadeth-peace-sells-but-whos-buying-canada-combat-12-lp-vintage-vinyl-record-cover-2DMY10P.jpg" />
-      <p>Architecture of Aggression</p>
-      <img src="https://i.discogs.com/ryLokGoiKnOPbuqNwiPcfxULC3xJPq2boXE8qZ2ICBg/rs:fit/g:sm/q:90/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ0MDk2/Ni0xMzM3MTc2MTIz/LTI5MzMuanBlZw.jpeg" />
-    </div>
-  )
+    <div>
+  <h2>Your playlist</h2>
+  <div className="playlist-flexbox">
+    {playlist.map(song => {
+     return (
+      <div className="flex-div" key={song.title}>
+      <h3>{song.title}</h3>
+      <img className="playlist-image" src={song.artwork} onMouseOver={() => setDelete(prev => !prev)}/>
+      {showDelete ? <div id="delete-song" onMouseOut={() => setDelete(prev => !prev)}>Delete</div> : null}
+      </div>
+     ) 
+    })}
+  </div>
+  </div>
+  );
 }
 
 

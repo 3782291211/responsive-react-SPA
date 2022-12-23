@@ -8,8 +8,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: linear-gradient(pink, orange, brown);
-  height: 100vh;
 }
+
+html, body { min-height: 100%; }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -21,6 +22,20 @@ h1{
   font-size: 9vw;
   color: pink;
   animation: color-change 32s infinite;
+}
+
+h2{
+  margin-top: 8vh;
+  margin-bottom: 0;
+  font-family: Bangers;
+  font-size: 7vw;
+  color: pink;
+  animation: color-change 32s infinite;
+}
+
+h3{
+  font-size: 3vw;
+  width: 100%;
 }
 
 @keyframes color-change {
@@ -38,12 +53,18 @@ h1{
 }
 
 #current-image {
-  width: 40vw;
+  width: 30%;
   margin-top: 5vh;
   border-radius: 4vw;
   border: 5px solid rgb(36, 40, 41);
   box-shadow: 10px 0px 50px 35px #c09abe;
   background-color: grey;
+}
+
+.playlist-image {
+width: 80%;
+border-radius: 4vw;
+border: 5px solid rgb(36, 40, 41);
 }
 
 .fade-in-image { 
@@ -80,9 +101,19 @@ button {
 
 .playlist-flexbox {
 display: flex;
-margin: 70px 6vw 10px 10px;
+flex-wrap: wrap;
+flex-flow: row;
+margin: 0;
+}
+
+.flex-div{
+margin: 2vw;
 }
 
 .playlist-flexbox > * {
-width: 30vw;
+width: 30%;
+}
+
+#delete-song{
+border: 10px solid red;
 }
