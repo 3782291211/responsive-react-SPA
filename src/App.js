@@ -28,7 +28,7 @@ const [newSong, setSong] = useState('');
 const [newArtist, setArtist] = useState('');
 const [imgUrl, setImgUrl] = useState('');
 const [songInfo, setSongInfo] = useState({title: "", album: "", artist: "", genre: "" , artwork: ""});
- 
+
 const handleNewSong = e => setSong(e.target.value);
 const handleNewArtist = e => setArtist(e.target.value);
 
@@ -58,41 +58,50 @@ const handleSubmit = e => {
   return (
     <div>
     <form onSubmit={handleSubmit}>
-      <label htmlFor="new-song">Enter song name</label>
-      <input id="new-song" type="text" value={newSong} onChange={handleNewSong}></input><br/>
 
       <label htmlFor="new-artist">Enter artist name</label>
       <input id="new-artist" type="text" value={newArtist} onChange={handleNewArtist}></input><br/>
 
+      <label htmlFor="new-song">Enter song name</label>
+      <input id="new-song" type="text" value={newSong} onChange={handleNewSong}></input><br/>
+
       <button>Add to playlist</button>
     </form>
-    {imgUrl ? <AlbumArt imgUrl={imgUrl} /> : null}
+    {imgUrl && newSong && newArtist ? <AlbumArt imgUrl={imgUrl} song={songInfo.title} artist={songInfo.artist} album={songInfo.album} /> : null}
     </div>
   )
 };
 
 
 
-function AlbumArt ({imgUrl}) {
+function AlbumArt ({imgUrl, song, artist, album}) {
   return (
-    <img id="current-image" src={imgUrl} />
+    <section id="display-track-grid">
+      <img id="current-image" src={imgUrl} alt="album art" />
+      <p id="p1"> <span className="span">Song title:</span> <br /> {song}</p> <br></br>
+      <p id="p2"> <span className="span">Artist name: </span> <br /> {artist}</p>
+      <p id="p3"> <span className="span">Album: </span> <br /> {album}</p>
+    </section>
   )
 }
 
 
 function Playlist ({playlist}) {
-const [showDelete, setDelete] = useState(false);
+const [showDelete, setDelete] = useState([]);
 
   return (
     <div>
   <h2>Your playlist</h2>
+  {playlist.length === 0 ? <p class="empty-playlist">Your playlist is currently empty. Let's add some songs to it!</p> : null}
   <div className="playlist-flexbox">
     {playlist.map(song => {
      return (
-      <div className="flex-div" key={song.title}>
-      <h3>{song.title}</h3>
-      <img className="playlist-image" src={song.artwork} onMouseOver={() => setDelete(prev => !prev)}/>
-      {showDelete ? <div id="delete-song" onMouseOut={() => setDelete(prev => !prev)}>Delete</div> : null}
+      <div className="flex-item" key={song.title}>
+
+          <h3>{song.title}</h3>
+          <img className="playlist-image" src={song.artwork} onMouseOver={() => setDelete(prev => !prev)} alt="album art added to playlist" />
+          {showDelete ? <div id="delete-song" onMouseOut={() => setDelete(prev => !prev)}>Delete</div> : null}
+      
       </div>
      ) 
     })}
