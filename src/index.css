@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
+.App {
+  text-align: center;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -34,6 +38,10 @@ h2{
   animation: color-change 32s infinite;
 }
 
+#new-artist {
+  margin-bottom: 0;
+}
+
 @keyframes color-change {
   0% { color: rgb(236, 55, 155); }
   10% { color: rgb(0, 9, 139); }
@@ -56,7 +64,7 @@ form {
   display: grid;
   margin: auto;
   margin-top: 6vw;
-  grid-template-columns: auto 30vw;
+  grid-template-columns: 45vw 30vw;
   grid-auto-rows: auto;
   justify-content:space-around;
   align-items: stretch;
@@ -92,7 +100,7 @@ form {
   text-overflow: ellipsis;
   margin: 0;
   font-size: 1.5vw;
-  border: 4px solid rgb(36, 40, 41);
+  border: 2px solid rgb(36, 40, 41);
   height:fit-content;
   border-radius: 10px;
   padding: 4px;
@@ -117,7 +125,7 @@ form {
   max-height: 500px;
   align-self: center;
   border-radius: 4vw;
-  box-shadow: 10px 0px 50px 35px #c09abe;
+  box-shadow: 10px 10px 1px 1px #c09abe;
 }
 
 .fade-in-image { 
@@ -131,7 +139,7 @@ form {
 
 label, .empty-playlist, p#error {
   font-size: 2.1vw;
-  padding-right: 10px;
+  padding: 0 10px;
   margin: 0 auto;
   width: max-content;
 }
@@ -144,7 +152,6 @@ input {
   width: 20vw;
   height: 2.1vw;
   font-size: 1.8vw;
-  margin-bottom: 10px;
 }
 
 p#error {
@@ -166,14 +173,13 @@ p#error {
 }
 
 button {
-  margin-left: 10px;
   font-family: Bangers;
   width: 25vw;
   height: 4vw;
   font-size: 3vw;
   color: rgb(227, 195, 100);
   margin-top: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   background-color: rgb(86, 40, 5);
   border-radius: 20px;
 }
@@ -224,8 +230,8 @@ margin-bottom: 5vh;
 
 .playlist-image {
   width: 20vw;
-  border-radius: 30px;
-  margin: 5px;
+  border-radius: 20px;
+  margin: 5px auto 0;
 }
 
 button.delete {
@@ -295,15 +301,16 @@ button.delete {
 
 @media (max-width: 600px) {
   h1, h2 {
-    margin: 20px;
+    margin: 7vw auto 4vw;
   }
   button#add {
-    margin: 10px 0 0 0;
+    margin: 20px 0 0 0;
   }
   p.empty-playlist{
     padding-top: 0;
   }
   p#error{
     padding: 10px;
+    margin: 0 auto;
   }
 };

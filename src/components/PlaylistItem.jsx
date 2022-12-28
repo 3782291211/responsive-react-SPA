@@ -13,5 +13,3 @@ export function PlaylistItem ({song, handleClick}) {
    </div>
   )
 };
-
-console.log(module);
