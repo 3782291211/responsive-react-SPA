@@ -1,7 +1,7 @@
 {
   "name": "my-first-react-app",
   "version": "0.1.0",
-  "homepage": "https://3782291211.github.io/my-first-react-app",
+  "homepage": "https://3782291211.github.io/responsive-react-SPA",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
