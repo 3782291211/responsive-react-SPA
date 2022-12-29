@@ -14,7 +14,7 @@ body {
   background-image: linear-gradient(pink, orange, brown);
 }
 
-html, body { min-height: 100%; }
+html, body { min-height: 100vh; }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -30,7 +30,7 @@ h1{
 }
 
 h2{
-  margin-top: 3vh;
+  margin-top: 5vw;
   margin-bottom: 0;
   font-family: Bangers;
   font-size: 6vw;
@@ -56,20 +56,15 @@ h2{
   100% { color: rgb(216, 0, 0); }
 }
 
-form {
-  margin-bottom: 20px;
-}
-
 #display-track-grid{
   display: grid;
   margin: auto;
   margin-top: 6vw;
-  grid-template-columns: 45vw 30vw;
+  grid-template-columns: auto 30vw;
   grid-auto-rows: auto;
   justify-content:space-around;
-  align-items: stretch;
-  gap: 2vw;
-  width: 50%;
+  gap: 4px;
+  width: 70%;
 }
 
 #p1 {
@@ -99,7 +94,7 @@ form {
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
-  font-size: 1.5vw;
+  font-size: 2.5vw;
   border: 2px solid rgb(36, 40, 41);
   height:fit-content;
   border-radius: 10px;
@@ -126,6 +121,7 @@ form {
   align-self: center;
   border-radius: 4vw;
   box-shadow: 10px 10px 1px 1px #c09abe;
+  margin-right: 10px;
 }
 
 .fade-in-image { 
@@ -138,7 +134,7 @@ form {
 }
 
 label, .empty-playlist, p#error {
-  font-size: 2.1vw;
+  font-size: 2vw;
   padding: 0 10px;
   margin: 0 auto;
   width: max-content;
@@ -146,12 +142,13 @@ label, .empty-playlist, p#error {
 
 .empty-playlist{
   padding-top: 30px;
+  margin-bottom: 40px;
 }
 
 input {
   width: 20vw;
-  height: 2.1vw;
-  font-size: 1.8vw;
+  height: fit-content;
+  font-size: 2vw;
 }
 
 p#error {
@@ -178,8 +175,8 @@ button {
   height: 4vw;
   font-size: 3vw;
   color: rgb(227, 195, 100);
-  margin-top: 50px;
-  margin-bottom: 10px;
+  margin-top: 40px;
+  margin-bottom: 0px;
   background-color: rgb(86, 40, 5);
   border-radius: 20px;
 }
@@ -245,6 +242,69 @@ button.delete {
   font-size: 2vw;
 }
 
+@media (max-width: 600px) {
+  h1, h2 {
+    margin: 7vw auto 4vw;
+  }
+
+  h1{
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  #add, #preview {
+    margin: 20px 0 0 0;
+    font-size: 15px;
+    height: fit-content;
+    width: fit-content;
+  }
+
+  #display-track-grid {
+    grid-template-columns: 120px 150px;
+    gap: 3px;
+    width: 95%;
+  }
+
+  p.empty-playlist{
+    padding-top: 0;
+  }
+  p#error{
+    padding: 10px;
+    margin: 0 auto;
+  }
+  #p1, #p2, #p3, #p4 {
+    font-size: 13px;
+    height: 22px;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 7px;
+  }
+
+  form > * {
+    font-size: 13px;
+  }
+};
+
+@media (min-width: 700px) {
+  h1{
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+  #p1, #p2, #p3, #p4 {
+    font-size: 290px;
+    height: 30px;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 7px;
+  }
+}
+
 @media (min-width: 1000px) {
   #p1, #p2, #p3, #p4 {
     font-size: 26px;
@@ -270,7 +330,7 @@ button.delete {
     font-size: 30px;
   }
 
-  button#add {
+  #add, #preview {
     width: 370px;
     font-size: 50px;
     height: 70px;
@@ -278,6 +338,20 @@ button.delete {
 
   #display-track-grid {
     margin-top: 90px;
+    margin-bottom: 70px;
+    grid-template-columns: 500px 500px;
+    grid-template-rows: repeat(4, 100px);
+    width: fit-content;
+    height: fit-content;
+    gap: 20px;
+  }
+
+  #display-track-grid > p {
+    font-size: 30px;
+  }
+
+  #current-image {
+    border-radius: 40px;
   }
 
   .playlist-flexbox {
@@ -299,18 +373,12 @@ button.delete {
   }
 }
 
-@media (max-width: 600px) {
-  h1, h2 {
-    margin: 7vw auto 4vw;
-  }
-  button#add {
-    margin: 20px 0 0 0;
-  }
-  p.empty-playlist{
-    padding-top: 0;
-  }
-  p#error{
-    padding: 10px;
-    margin: 0 auto;
-  }
-};
+#preview {
+  margin-bottom: 0.5vw;
+  width: fit-content;
+}
+
+#add {
+  margin-top: 0.5vw;
+  width: fit-content;
+}
