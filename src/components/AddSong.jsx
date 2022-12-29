@@ -14,7 +14,6 @@ export function AddSong ({setPlaylist}) {
     const handleNewArtist = e => setArtist(e.target.value);
     
     useEffect(() => {
-    //  if (newSong.length > 1 && newArtist.length > 1) {
         musicInfo.searchSong(
           {title: newSong, artist: newArtist}).then(obj => {
             if (obj.artwork) {
@@ -27,7 +26,6 @@ export function AddSong ({setPlaylist}) {
                setError('error');
             }
           }).catch(() => {});
-     // }
     }, [search]);
     
     const handleSubmit = e => {
