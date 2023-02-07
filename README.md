@@ -14,11 +14,8 @@ To see the app in action:
 4. Remove songs from the playlist by clicking 'remove'.    
 
 
-## Screenshots
+## App view
 Here's a full view of the user interface (responsive on all typical viewports, and optimised for mobile and tablet).
 
 <img src="Screenshot.png" width="600px"/>  
 <br/><br/>
-The app renders an error message if the API fails to fetch the required data. 
-<br/><br/>
-<img src="Screenshot2.png" width="500px"/>
